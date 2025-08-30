@@ -60,7 +60,7 @@ dependencies {
     implementation(libs.squareup.okhttp3)
     implementation(libs.retrofit.gsonconverter)
     implementation(libs.squareup.logging.interceptor)
-
+    implementation(project(":domain"))
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.hilt.common)
     implementation(libs.androidx.work.runtime.ktx)
