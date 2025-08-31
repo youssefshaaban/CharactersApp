@@ -1,4 +1,4 @@
-package com.example.charactersapp
+package com.example.characters
 
 import org.junit.Test
 

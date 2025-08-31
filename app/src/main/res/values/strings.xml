@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">CharactersApp</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="something_want_wrong">Some thing want wrong</string>
 </resources>
