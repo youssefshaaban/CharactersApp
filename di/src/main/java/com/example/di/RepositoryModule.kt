@@ -1,7 +1,6 @@
-package com.example.data.di
+package com.example.di
 
-
-import com.example.data.di.qulifier.CharactersDataMapper
+import com.example.di.qulifier.CharactersDataMapper
 import com.example.data.model.characters_list.CharactersResponse
 import com.example.data.remote.CharactersAPI
 import com.example.data.repositories.CharactersRepositoryImp
