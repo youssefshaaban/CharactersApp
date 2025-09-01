@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -79,8 +80,8 @@ fun CharactersListScreen(onCharacterClick: (Character) -> Unit) {
             listState = uiState,
             modifier = Modifier.fillMaxSize(),
             keyExtractor = { it.id }
-        ) { item ->
-            CharacterItem(item) { character ->
+        ) { item,index ->
+            CharacterItem(index,item) { character ->
                 onCharacterClick(character)
             }
         }
@@ -91,13 +92,13 @@ fun CharactersListScreen(onCharacterClick: (Character) -> Unit) {
 
 @Composable
 fun CharacterItem(
-    character: Character, onClick: (Character) -> Unit
+   index: Int, character: Character, onClick: (Character) -> Unit
 ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp)
-            .clickable(onClick = { onClick(character) }),
+            .clickable(onClick = { onClick(character) }).testTag("item$index"),
         shape = RoundedCornerShape(16.dp),
         border = BorderStroke(1.dp, Color(0xFFE8E6F0)), // subtle border color
         colors = CardDefaults.cardColors(containerColor = Color.White),

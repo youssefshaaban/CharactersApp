@@ -15,6 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import com.example.characters.R
 import com.example.characters.ui.screens.characterslist.ListState
@@ -32,7 +33,7 @@ fun <T> PaginatedLazyColumn(
     listState: ListState,
     modifier: Modifier = Modifier,
     keyExtractor: (T) -> Any, // extracts a stable ID from item
-    listContent: @Composable (T) -> Unit
+    listContent: @Composable (T, Int) -> Unit
 ) {
     val shouldLoadMore = remember {
         derivedStateOf {
@@ -56,10 +57,10 @@ fun <T> PaginatedLazyColumn(
     }
     // LazyColumn to display the list of items
     if (listState==ListState.LOADING) {
-        Loading(modifier = Modifier.fillMaxSize())
+        Loading(modifier = Modifier.fillMaxSize().testTag("loading"))
     }
     if (listState==ListState.ERROR){
-        Column (modifier=Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally , verticalArrangement = Arrangement.Center) {
+        Column (modifier=Modifier.fillMaxSize().testTag("errorContent"), horizontalAlignment = Alignment.CenterHorizontally , verticalArrangement = Arrangement.Center) {
             Text(text = stringResource(R.string.something_want_wrong))
         }
     }
@@ -71,7 +72,7 @@ fun <T> PaginatedLazyColumn(
         // Render each item in the list using a unique key
         itemsIndexed(items, key = { _, item -> keyExtractor(item)}){
             index, item ->
-            listContent(item)
+            listContent(item,index)
         }
 //        itemsIndexed(items, key = { _, item -> keyExtractor(item) }) { index, item ->
 //            listContent(item)
