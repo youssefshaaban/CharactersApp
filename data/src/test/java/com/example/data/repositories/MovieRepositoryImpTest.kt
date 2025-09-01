@@ -78,7 +78,7 @@ class MovieRepositoryImpTest {
         }
 
     @Test
-    fun `getMovieListNowPlaying on API error returns erorr`() = runTest {
+    fun `getCharacters on_API error returns error`() = runTest {
         val queryCharacters = QueryCharacters(page = 1)
 
         coEvery { charactersAPI.getCharacters(any()) } throws RuntimeException()
