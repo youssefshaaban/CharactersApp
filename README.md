@@ -1,6 +1,6 @@
 # MVVM Architecture Android Movies app
 
-This repository contains a Movies app that implements MVVM architecture using Kotlin, JetpackCompose, Hilt,
+This repository contains a Characters app that implements MVVM architecture using Kotlin, JetpackCompose, Hilt,
 Retrofit, Coroutines, Flow, StateFlow, and etc.
 <p align="center">
   <img src="https://github.com/youssefshaaban/MarvelApp/blob/main/design-architecture.jpg">
